@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 02/03/2018 06:04:56 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="org.plantilla.be.Persona" table="persona" schema="public" optimistic-lock="version">
+        <id name="idpersona" type="long">
+            <column name="idpersona" />
+            <generator class="increment" />
+        </id>
+        <property name="codSocio" type="string">
+            <column name="cod_socio" length="30" />
+        </property>
+        <property name="agencia" type="string">
+            <column name="agencia" length="120" />
+        </property>
+        <property name="socio" type="string">
+            <column name="socio" length="150" />
+        </property>
+        <property name="fechaIngreso" type="date">
+            <column name="fecha_ingreso" length="13" />
+        </property>
+        <property name="saldoDic" type="big_decimal">
+            <column name="saldo_dic" precision="18" />
+        </property>
+        <property name="saldoMar" type="big_decimal">
+            <column name="saldo_mar" precision="18" />
+        </property>
+        <property name="sexo" type="string">
+            <column name="sexo" length="10" />
+        </property>
+        <property name="fechaNacimiento" type="date">
+            <column name="fecha_nacimiento" length="13" />
+        </property>
+        <property name="nrodoc" type="string">
+            <column name="nrodoc" length="30" />
+        </property>
+        <property name="edad" type="java.lang.Integer">
+            <column name="edad" />
+        </property>
+        <property name="cargo" type="string">
+            <column name="cargo" length="60" />
+        </property>
+        <property name="mesa" type="string">
+            <column name="mesa" length="10" />
+        </property>
+        <property name="mesaVotacion" type="string">
+            <column name="mesa_votacion" length="10" />
+        </property>
+        <property name="miembro" type="string">
+            <column name="miembro" length="20" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,234 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="./css/default.css"/>
+        <h:outputStylesheet name="./css/cssLayout.css"/>
+        <h:outputStylesheet name="./css/bootstrap.css"/>
+        <h:outputStylesheet name="./css/estilos.css"/>
+
+        <h:outputScript library="js" name="jquery-3.2.1.min.js"/>
+        <h:outputScript library="js" name="bootstrap.js"/>
+        <title>Elecciones</title>
+
+    </h:head>
+
+    <h:body>
+
+        <div class="container">
+            <center><h2>Elecciones CACSMM 2018 </h2></center>
+            <div class="row inbox-head">
+
+                <!--        <h:form >
+                            <p:toolbar>
+                                <f:facet name="right">
+                                    <h:outputText value="Busqueda: " />
+        
+                                    <p:inputText id="txtBusqueda" style="width: 150px; text-transform: uppercase" value="{personaBean.txtBusqueda}" placeholder="USUARIO">
+                                        <p:ajax event="keyup" update=":formDataTable" listener="{personaBean.listarRef()}" />
+                                    </p:inputText>
+                                    <p:inputText id="txtNombres" style="width: 150px; text-transform: uppercase" value="#{personaBean.txtBusqueda}" placeholder="USUARIO">
+                                        <p:ajax event="keyup" update=":formDataTable" listener="{personaBean.listarNombres()}" />
+                                    </p:inputText>
+        
+                                </f:facet>
+                            </p:toolbar>
+                        </h:form> 
+                -->
+
+                <div class="col-sm-4">
+                    <h4>Buscar por DNI ó Apellidos y Nombres</h4>
+                </div>
+
+
+
+                <div class="col-sm-4">
+                    <h:form>
+                        <form class="pull-right position">
+                            <div class="input-append">
+                                <p:inputText id="txtBusqueda" class="sr-input" style="width: 300px; text-transform: uppercase" value="#{personaBean.txtBusqueda}" placeholder="DNI">
+                                    <p:ajax event="keyup" update=":formDataTable" listener="#{personaBean.listarRef()}" />
+                                </p:inputText>
+                            </div>
+                        </form>
+                    </h:form>
+                </div>
+
+
+                <div class="col-sm-4">
+                    <h:form>
+                        <form  class="pull-right position">
+                            <div class="input-append">
+                                <p:inputText id="txtNombres" class="sr-input" style="width: 300px; text-transform: uppercase" value="#{personaBean.txtBusqueda}" placeholder="Apellidos y Nombres">
+                                    <p:ajax event="keyup" update=":formDataTable" listener="#{personaBean.listarNombres()}" />
+                                </p:inputText>
+                            </div>
+                        </form>
+                    </h:form>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="container">
+            <div class="row">
+                <h:form id="formDataTable">
+                    <p:dataTable id="lista" value="#{personaBean.listPersonas}" var="item" selectionMode="single" selection="#{personaBean.persona}" rowKey="#{item.idpersona}"
+                                 paginator="true" rows="5" paginatorPosition="bottom"
+                                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                 rowsPerPageTemplate="5,15,20" editable="true">
+
+
+                        <p:ajax event="rowSelect" listener="#{personaBean.onRowSelect}" update="formP1"/>
+                        <p:ajax event="rowUnselect" listener="#{personaBean.onRowUnselect}"  />
+
+                        <p:column headerText="Apellidos y Nombres" style=" width: 90px">
+                            <h:outputText value="#{item.socio}"/>
+                        </p:column>          
+
+                        <p:column headerText="DNI" style="width:25px;">
+                            <h:outputText value="#{item.nrodoc}"/>
+                        </p:column>
+
+                        <p:column headerText="Agencia" style="width:50px;text-align: center">
+                            <h:outputText value="#{item.agencia}"/>
+                        </p:column>
+
+                        <p:column headerText="Fecha Ingreso" style="width:30px; text-align: center">
+                            <h:outputText value="#{item.fechaIngreso}"/>
+                        </p:column>
+                        <p:column headerText="Saldo Aporte Diciembre" style="width:30px;">
+                            <h:outputText value="#{item.saldoDic}"/>
+                        </p:column>
+                        <p:column headerText="Edad" style="width:10px;">
+                            <h:outputText value="#{item.edad}"/>
+                        </p:column>
+                        <p:column headerText="Mesa Votación" style="width:10px;">
+                            <h:outputText value="#{item.mesaVotacion}"/>
+                        </p:column>                        
+                        <p:column headerText="Miembro" style="width: 25px">
+                            <h:outputText value="#{item.miembro}"/>
+                        </p:column>
+
+                    </p:dataTable>
+                </h:form>
+            </div>
+        </div>
+
+        <br></br>
+
+        <div class="container colorN">
+            <div class="row">
+                <h:form id="formP1">
+                    
+                        <div class="col-sm-3">
+                            <div class="ui-fluid">
+                                <div class="ui-g">
+                                    <div class="form-group">
+                                        <label for="formGroupExampleInput">DNI</label>
+                                        <p:inputText id="txfNumero8" class="form-control" label="Numero" required="true" readonly="true" disabled="true"
+                                                     value="#{personaBean.persona.nrodoc}" style="width:280px;"/>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="formGroupExampleInput">Saldo aporte 31 Diciembre</label>
+                                        <p:inputText id="txfNumero4" class="form-control" label="Numero" required="true" readonly="true" disabled="true"
+                                                     value="#{personaBean.persona.saldoDic}" style="width:280px;"/>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="formGroupExampleInput">Miembro mesa</label>
+                                        <p:inputText id="txfNumero9" class="form-control" label="Numero" required="true" readonly="true" disabled="true"
+                                                     value="#{personaBean.persona.miembro}" style="width:280px;"/>
+                                    </div>
+
+                                </div>                            
+                            </div> 
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="ui-fluid">
+                                <div class="ui-g">
+                                    <div class="form-group">
+                                        <label for="formGroupExampleInput">Nombre socio</label>
+                                        <p:inputText id="txfNumero" class="form-control" label="Numero" required="true" readonly="true" disabled="true"
+                                                     value="#{personaBean.persona.socio}" style="width:280px;"/>
+                                    </div>
+
+                                    <div class="form-group5">
+                                        <label for="formGroupExampleInput">Saldo aporte 01 Marzo</label>
+                                        <p:inputText id="txfNumero2" class="form-control" label="Numero" required="true" readonly="true" disabled="true"
+                                                     value="#{personaBean.persona.saldoMar}" style="width:280px;"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="formGroupExampleInput">Mesa de votación</label>
+                                        <p:inputText id="txfNumero88" class="form-control" label="Numero" required="true" readonly="true" disabled="true"
+                                                     value="#{personaBean.persona.mesaVotacion}" style="width:280px;"/>
+                                    </div>
+                                </div>                            
+                            </div> 
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="ui-fluid">
+                                <div class="ui-g">
+
+                                    <div class="form-group">
+                                        <label for="formGroupExampleInput">Agencia</label>
+                                        <p:inputText id="txfNumero32" class="form-control" label="Numero" required="true" readonly="true" disabled="true"
+                                                     value="#{personaBean.persona.agencia}" style="width:280px;"/>
+                                    </div>
+                                    <div class="form-group6">
+                                        <label for="formGroupExampleInput">Fecha ingreso</label>
+                                        <p:inputText id="txfNumero3" class="form-control" label="Numero" required="true" readonly="true" disabled="true"
+                                                     value="#{personaBean.persona.fechaIngreso}" style="width:280px;"/>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="formGroupExampleInput">Mesa de atencion del Mientro</label>
+                                        <p:inputText id="txfNumero25" class="form-control" label="Numero" required="true" readonly="true" disabled="true"
+                                                     value="#{personaBean.persona.mesa}" style="width:280px;"/>
+                                    </div>
+
+                                </div>                            
+                            </div> 
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="ui-fluid">
+                                <div class="ui-g">
+
+                                    <div class="form-group">
+                                        <label for="formGroupExampleInput">Edad</label>
+                                        <p:inputText id="txfNumero23" class="form-control" label="Numero" required="true" readonly="true" disabled="true"
+                                                     value="#{personaBean.persona.edad}" style="width:250px;"/>
+                                    </div>
+                                    <div class="form-group5">
+                                        <label for="formGroupExampleInput">Fecha nacimiento</label>
+                                        <p:inputText id="txfNumero22" class="form-control" label="Numero" required="true" readonly="true" disabled="true"
+                                                     value="#{personaBean.persona.fechaNacimiento}" style="width:250px;"/>
+                                    </div>
+                                    <div class="form-group6">
+                                        <label for="formGroupExampleInput">Cargo del miembro de mesa</label>
+                                        <p:inputText id="txfNumero21" class="form-control" label="Numero" required="true" readonly="true" disabled="true"
+                                                     value="#{personaBean.persona.cargo}" style="width:250px;"/>
+                                    </div>
+
+                                </div>                            
+                            </div> 
+                        </div>
+                    
+                </h:form> 
+            </div>
+
+        </div>
+
+
+    </h:body>
+
+</html>
