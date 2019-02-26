@@ -59,12 +59,12 @@ public class PersonaDao extends AbstractDA<Persona>{
     }
 
     public List<Persona> listarRef(String txtBusqueda) {
-        String hql = "from Persona a where a.nrodoc = '"+txtBusqueda+"'";
+        String hql = "from Persona a where a.nroDoc = '"+txtBusqueda+"'";
         return listar(hql);
     }
 
     public List<Persona> listarNombres(String txtBusqueda) {
-    String hql = "from Persona a where a.socio like '%"+txtBusqueda+"%'";
+    String hql = "from Persona a where a.nombreSocio like '%"+txtBusqueda+"%'";
         return listar(hql);    
     }
 

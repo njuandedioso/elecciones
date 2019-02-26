@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Factura" language="groovy" pageWidth="218" pageHeight="5040" columnWidth="180" leftMargin="19" rightMargin="19" topMargin="0" bottomMargin="0" whenResourceMissingType="Empty" isIgnorePagination="true" uuid="6e9b53c3-420d-49bc-8bd3-f8742910d2e3">
+	<property name="ireport.zoom" value="1.4641000000000013"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="ID_PERSONA" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT per.cod_socio,
+per.nombre_socio,
+per.nro_doc,
+per.cod_socio,
+per.agencia
+from persona per where per.idpersona = $P{ID_PERSONA}]]>
+	</queryString>
+	<field name="cod_socio" class="java.lang.String"/>
+	<field name="nombre_socio" class="java.lang.String"/>
+	<field name="nro_doc" class="java.lang.String"/>
+	<field name="agencia" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="71" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="830734b4-7167-4e4c-b461-97de22c34c6b" x="0" y="2" width="180" height="29"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial Narrow" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[COOPERATIVA SANTA MARÍA MAGADALENA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5c13b829-7c1f-4c2c-bf8d-a03fd87b3e2f" x="0" y="31" width="180" height="35"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial Narrow" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ELECCIONES GENERALES COMPLEMENTARIAS PARA DELEGADOS 2019]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="142" splitType="Stretch">
+			<line>
+				<reportElement uuid="ecee6326-2f8c-458f-95f5-06e95f5e6871" x="0" y="3" width="180" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement uuid="130cbc03-b6f2-497a-b111-473fed07b160" x="0" y="5" width="180" height="30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial Narrow" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MESA DE TRANSEÚNTES]]></text>
+			</staticText>
+			<textField pattern="0000000000" isBlankWhenNull="true">
+				<reportElement uuid="74f2ea24-f30b-46eb-92ae-f8747b7eba3e" x="90" y="72" width="90" height="14" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial Narrow" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cod_socio}]]></textFieldExpression>
+			</textField>
+			<textField pattern="0000000000" isBlankWhenNull="true">
+				<reportElement uuid="8a5bc471-1455-4055-92e8-730f2821870a" x="0" y="103" width="180" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial Narrow" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{agencia}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="5c42dc30-c580-4643-86c3-797db0d8c25b" x="0" y="92" width="180" height="12" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial Narrow" size="10"/>
+				</textElement>
+				<text><![CDATA[AGENCIA AL QUE PERTENECE]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="5e4efa18-7d82-42da-ae55-4ec0eeea5b57" x="0" y="89" width="180" height="1" forecolor="#000000"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<textField pattern="0000000000" isBlankWhenNull="true">
+				<reportElement uuid="1a426782-f340-4ffa-b395-9cebf5411a3d" x="0" y="72" width="90" height="14" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial Narrow" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nro_doc}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="8b8773f7-dc6d-4b5f-8ed2-ec503646b4e2" x="0" y="61" width="90" height="12" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial Narrow" size="10"/>
+				</textElement>
+				<text><![CDATA[DNI :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="44ac31d3-6766-4513-9d24-63e0cfe116a6" x="90" y="61" width="90" height="12" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial Narrow" size="10"/>
+				</textElement>
+				<text><![CDATA[CÓDIGO SOCIO :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="67274113-da31-4f7b-9514-818561f05cae" x="0" y="35" width="180" height="12" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial Narrow" size="10"/>
+				</textElement>
+				<text><![CDATA[NOMBRE :]]></text>
+			</staticText>
+			<textField pattern="000000000000" isBlankWhenNull="true">
+				<reportElement uuid="82defa87-bb5b-4e46-8863-fb4b38a955c4" x="0" y="46" width="180" height="14" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial Narrow" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre_socio}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch"/>
+	</columnFooter>
+</jasperReport>

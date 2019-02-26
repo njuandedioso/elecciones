@@ -1,30 +1,42 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 02/03/2018 06:04:56 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 20/02/2019 11:58:08 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="org.plantilla.be.Persona" table="persona" schema="public" optimistic-lock="version">
         <id name="idpersona" type="long">
             <column name="idpersona" />
-            <generator class="increment" />
+            <generator class="assigned" />
         </id>
         <property name="codSocio" type="string">
             <column name="cod_socio" length="30" />
         </property>
+        <property name="idTercero" type="java.lang.Long">
+            <column name="id_tercero" precision="18" scale="0" />
+        </property>
         <property name="agencia" type="string">
             <column name="agencia" length="120" />
         </property>
-        <property name="socio" type="string">
-            <column name="socio" length="150" />
+        <property name="nombreSocio" type="string">
+            <column name="nombre_socio" length="150" />
+        </property>
+        <property name="nroDoc" type="string">
+            <column name="nro_doc" length="30" />
+        </property>
+        <property name="tipoPersona" type="string">
+            <column name="tipo_persona" length="8" />
         </property>
         <property name="fechaIngreso" type="date">
             <column name="fecha_ingreso" length="13" />
         </property>
-        <property name="saldoDic" type="big_decimal">
-            <column name="saldo_dic" precision="18" />
+        <property name="fechaUltimoMov" type="date">
+            <column name="fecha_ultimo_mov" length="13" />
         </property>
-        <property name="saldoMar" type="big_decimal">
-            <column name="saldo_mar" precision="18" />
+        <property name="saldoAporte31dic" type="big_decimal">
+            <column name="saldo_aporte_31dic" precision="18" />
+        </property>
+        <property name="saldoAporte18feb" type="big_decimal">
+            <column name="saldo_aporte_18feb" precision="18" />
         </property>
         <property name="sexo" type="string">
             <column name="sexo" length="10" />
@@ -32,23 +44,32 @@
         <property name="fechaNacimiento" type="date">
             <column name="fecha_nacimiento" length="13" />
         </property>
-        <property name="nrodoc" type="string">
-            <column name="nrodoc" length="30" />
-        </property>
         <property name="edad" type="java.lang.Integer">
             <column name="edad" />
         </property>
-        <property name="cargo" type="string">
-            <column name="cargo" length="60" />
+        <property name="miembroMesa" type="string">
+            <column name="miembro_mesa" length="120" />
         </property>
-        <property name="mesa" type="string">
-            <column name="mesa" length="10" />
+        <property name="miembroCargo" type="string">
+            <column name="miembro_cargo" length="100" />
         </property>
-        <property name="mesaVotacion" type="string">
-            <column name="mesa_votacion" length="10" />
+        <property name="nroMesa" type="java.lang.Integer">
+            <column name="nro_mesa" />
         </property>
-        <property name="miembro" type="string">
-            <column name="miembro" length="20" />
+        <property name="nroOrden" type="java.lang.Integer">
+            <column name="nro_orden" />
+        </property>
+        <property name="ordenAlfabetico" type="string">
+            <column name="orden_alfabetico" length="8" />
+        </property>
+        <property name="pabellon" type="string">
+            <column name="pabellon" length="8" />
+        </property>
+        <property name="piso" type="java.lang.Integer">
+            <column name="piso" />
+        </property>
+        <property name="aula" type="java.lang.Integer">
+            <column name="aula" />
         </property>
     </class>
 </hibernate-mapping>

@@ -75,7 +75,7 @@ public class PersonaBl extends AbstractBL<Persona> {
     public long id() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+ 
     public List<Persona> listarRef(String txtBusqueda) {
         return dao.listarRef(txtBusqueda);
     }
@@ -84,7 +84,7 @@ public class PersonaBl extends AbstractBL<Persona> {
         return dao.listarNombres(txtBusqueda);
     }
     
-    public List<Persona> listarxIdPedido(long id) {
-        return dao.listarxIdPedido(id);
-    }
+//    public List<Persona> listarxIdPedido(long id) {
+//        return dao.listarxIdPedido(id);
+//    }
 }
